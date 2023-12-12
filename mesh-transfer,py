@@ -1,0 +1,25 @@
+import vtk
+import numpy as np
+import sys
+
+
+from interpolate import interpolate_solution
+from gridCreator import createMesh
+import numpy as np
+
+if __name__ == "__main__":
+
+    # Create the mesh object with all initial values set to 0.0
+    mesh = createMesh()
+
+    # Load the vtu file from actual simulation we want to transfer
+    vtu_file_path = "./assets/taly.vtu"
+
+    # Generate the mapping
+    for count, coords in enumerate(mesh):
+        x, y, z, _ = coords
+        result = interpolate_solution(vtu_file_path, x, y, z)
+        mesh[count][3] = result
+
+    # Save the mesh to a file - This is the final file on which we will learn Machine Learning
+    np.savetxt("mesh.csv", mesh, delimiter=",")

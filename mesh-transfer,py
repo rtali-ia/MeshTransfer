@@ -13,7 +13,10 @@ if __name__ == "__main__":
     mesh = createMesh()
 
     # Load the vtu file from actual simulation we want to transfer
-    vtu_file_path = "./assets/taly.vtu"
+    if len(sys.argv) > 1:
+        vtu_file_path = "./assets/"+sys.argv[1]+".vtu"
+    else:
+        vtu_file_path = "./assets/taly.vtu"
 
     # Generate the mapping
     for count, coords in enumerate(mesh):
@@ -22,7 +25,7 @@ if __name__ == "__main__":
         mesh[count][3] = result
 
     # Save the mesh to a file - This is the final file on which we will learn Machine Learning
-    if len(sys.argv) > 1:
-        np.save('./assets/'+sys.argv[1], mesh, delimiter=",")
+    if len(sys.argv) > 2:
+        np.save('./assets/'+sys.argv[2], mesh, delimiter=",")
     else:
         np.save("./assets/transferred_mesh.npy", mesh, delimiter=",")

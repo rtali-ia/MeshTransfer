@@ -2,6 +2,10 @@ import numpy as np
 import io
 import libconf
 
+'''
+In this file we will create a regular cuboidal mesh of fixed dimensions
+'''
+
 
 def createMesh():
     with open('settings.cfg') as f:

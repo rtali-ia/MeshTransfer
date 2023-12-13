@@ -1,6 +1,8 @@
 import vtk
+from utils import timeit
 
 
+@timeit
 def interpolate_solution(vtu_file_path, x, y, z):
     # Read the vtu file
     reader = vtk.vtkXMLUnstructuredGridReader()

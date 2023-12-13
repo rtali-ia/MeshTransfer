@@ -34,9 +34,9 @@ def createMesh():
         '''
         Create the Mesh
         '''
-        for _i in Xs:
+        for _k in Zs:
             for _j in Ys:
-                for _k in Zs:
+                for _i in Xs:
                     meshArray.append([_i, _j, _k, 0.0])
 
         return meshArray

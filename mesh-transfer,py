@@ -22,4 +22,7 @@ if __name__ == "__main__":
         mesh[count][3] = result
 
     # Save the mesh to a file - This is the final file on which we will learn Machine Learning
-    np.savetxt("mesh.csv", mesh, delimiter=",")
+    if len(sys.argv) > 1:
+        np.save('./assets/'+sys.argv[1], mesh, delimiter=",")
+    else:
+        np.save("./assets/transferred_mesh.npy", mesh, delimiter=",")
